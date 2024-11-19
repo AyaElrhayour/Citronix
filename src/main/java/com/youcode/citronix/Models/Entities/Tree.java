@@ -28,9 +28,12 @@ public class Tree {
     @Column(name = "plantingDate" , nullable = false)
     private LocalDate plantingDate;
 
+    @Column(name = "isHarvested" , nullable = false)
+    private boolean isHarvested;
+
     @ManyToOne(fetch = FetchType.EAGER , optional = false)
     private Field field;
 
-    @OneToMany(mappedBy = "arbre", cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "tree", cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     private Set<HarvestDetails> harvestDetails;
 }
