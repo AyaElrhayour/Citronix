@@ -24,8 +24,8 @@ public class Farm {
     @Column(nullable = false , name = "name")
     private String name;
 
-    @Column(name = "localisation" , nullable = false)
-    private String localisation;
+    @Column(name = "location" , nullable = false)
+    private String location;
 
     @Column(nullable = false , name = "surface")
     private Double surface;
