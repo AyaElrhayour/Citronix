@@ -14,9 +14,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class HarvestDetailsEmbdedId {
 
-    @Column(name = "TreeId")
-    private UUID TreeId;
+    @Column(name = "treeId")
+    private UUID treeId;
 
-    @Column(name = "HarvestId")
-    private UUID HarvestId;
+    @Column(name = "harvestId")
+    private UUID harvestId;
 }

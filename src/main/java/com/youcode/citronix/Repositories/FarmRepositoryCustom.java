@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface FarmRepositoryCustom {
 
-    List<Farm> globalSearchForFarms(UUID id, String name, String location, Double surface, LocalDate creationDate);
+    List<Farm> globalSearchForFarms(String name, String location, Double surface, LocalDate creationDate);
 }

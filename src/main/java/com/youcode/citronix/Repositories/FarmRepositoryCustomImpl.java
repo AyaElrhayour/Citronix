@@ -21,7 +21,7 @@ public class FarmRepositoryCustomImpl implements FarmRepositoryCustom {
 
 
     @Override
-    public List<Farm> globalSearchForFarms(UUID id, String name, String location, Double surface, LocalDate creationDate) {
+    public List<Farm> globalSearchForFarms(String name, String location, Double surface, LocalDate creationDate) {
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Farm> criteria = cb.createQuery(Farm.class);
@@ -30,16 +30,12 @@ public class FarmRepositoryCustomImpl implements FarmRepositoryCustom {
         List<Predicate> predicates = new ArrayList<>();
 
         criteria.multiselect(
-                farm.get("id"),
                 farm.get("name"),
                 farm.get("location"),
                 farm.get("surface"),
                 farm.get("creationDate")
         );
 
-        if (id != null) {
-            predicates.add(cb.equal(farm.get("id"), id));
-        }
 
         if (name != null && !name.isEmpty()) {
             predicates.add(cb.equal(farm.get("name"), "%" + name + "%"));

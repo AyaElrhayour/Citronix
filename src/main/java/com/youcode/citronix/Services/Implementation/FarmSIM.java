@@ -7,11 +7,13 @@ import com.youcode.citronix.Mappers.FarmMapper;
 import com.youcode.citronix.Models.Entities.Farm;
 import com.youcode.citronix.Repositories.FarmRepository;
 import com.youcode.citronix.Services.Interfaces.FarmSIN;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,8 +37,17 @@ public class FarmSIM implements FarmSIN {
     }
 
     @Override
-    public FarmOnlyDTO globalGetFarm(UUID id, String name, String location, Double surface, LocalDate creationDate) {
-       List<Farm> farms = farmRepository.globalSearchForFarms(id, name, location, surface, creationDate);
+    public FarmOnlyDTO getFarmById(UUID id) {
+        if (farmRepository.existsById(id)) {
+            return farmMapper.toFarmOnlyDTO(farmRepository.findById(id).get());
+        }else {
+            throw new EntityNotFoundException("Farm with id " + id + " not found");
+        }
+    }
+
+    @Override
+    public FarmOnlyDTO globalGetFarm(String name, String location, Double surface, LocalDate creationDate) {
+       List<Farm> farms = farmRepository.globalSearchForFarms(name, location, surface, creationDate);
         if (farms.isEmpty()) {
             return null;
         }
@@ -54,16 +65,14 @@ public class FarmSIM implements FarmSIN {
     }
 
     @Override
-    public FarmCreationDTO updateFarm(FarmCreationDTO farmCreationDTO) {
-        Farm existingFarm = farmRepository.findById(farmCreationDTO.getId()).orElse(null);
-        if (existingFarm == null) {
-            return null;
-        }
-        existingFarm.setName(farmCreationDTO.getName());
-        existingFarm.setLocation(farmCreationDTO.getLocation());
-        existingFarm.setSurface(farmCreationDTO.getSurface());
-        existingFarm.setCreationDate(farmCreationDTO.getCreationDate());
-        existingFarm = farmRepository.save(existingFarm);
-        return farmMapper.toFarmCreationDTO(existingFarm);
+    public FarmCreationDTO updateFarm(UUID id, FarmCreationDTO farmCreationDTO) {
+        Farm farm = farmRepository.findById(id).orElseThrow(() -> new RuntimeException("Farm with id " + id + " not found"));
+
+        farm.setName(farmCreationDTO.getName());
+        farm.setLocation(farmCreationDTO.getLocation());
+        farm.setSurface(farmCreationDTO.getSurface());
+        farm.setCreationDate(farmCreationDTO.getCreationDate());
+        return farmMapper.toFarmCreationDTO(farmRepository.save(farm));
+
     }
 }

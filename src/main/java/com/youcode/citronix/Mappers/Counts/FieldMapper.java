@@ -1,4 +1,4 @@
-package com.youcode.citronix.Mappers;
+package com.youcode.citronix.Mappers.Counts;
 
 import com.youcode.citronix.DTO.Field.AllFieldsDTO;
 import com.youcode.citronix.Models.Entities.Field;

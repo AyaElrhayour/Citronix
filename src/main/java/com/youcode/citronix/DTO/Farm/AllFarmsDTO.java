@@ -31,5 +31,5 @@ public class AllFarmsDTO {
     private LocalDate creationDate;
 
     @NotNull
-    private Integer fieldCount;
+    private Integer fieldsCount;
 }
