@@ -35,4 +35,12 @@ public class Farm {
 
     @OneToMany(fetch = FetchType.EAGER , mappedBy = "farm")
     private List<Field> fields;
+
+
+    public Farm(String name, String location, Double surface, LocalDate creationDate) {
+        this.name = name;
+        this.location = location;
+        this.surface = surface;
+        this.creationDate = creationDate;
+    }
 }

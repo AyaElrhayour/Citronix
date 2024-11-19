@@ -7,4 +7,5 @@ import org.springframework.data.repository.Repository;
 import java.util.UUID;
 
 public interface FarmRepository extends JpaRepository<Farm, UUID>, FarmRepositoryCustom {
+
 }

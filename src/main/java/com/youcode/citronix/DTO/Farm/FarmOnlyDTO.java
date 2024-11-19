@@ -35,4 +35,6 @@ public class FarmOnlyDTO {
 
     @NotBlank
     private List<AllFieldsDTO> allFields;
+
+
 }

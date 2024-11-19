@@ -40,13 +40,13 @@ public class FarmController {
         return ResponseEntity.ok(farmSIN.getFarmById(id));
     }
 
-    @GetMapping("/search/")
-    public ResponseEntity<FarmOnlyDTO> globalSearch(
+    @GetMapping("/search")
+    public ResponseEntity<List<FarmOnlyDTO>> globalSearch(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String location,
             @RequestParam(required = false) Double surface,
             @RequestParam(required = false) LocalDate creationDate) {
-        FarmOnlyDTO farm = farmSIN.globalGetFarm( name, location, surface, creationDate);
+        List<FarmOnlyDTO> farm = farmSIN.globalGetFarm( name, location, surface, creationDate);
         if (farm == null) {
             return ResponseEntity.notFound().build();
         }

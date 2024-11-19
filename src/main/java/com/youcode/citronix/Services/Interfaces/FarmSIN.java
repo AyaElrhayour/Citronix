@@ -14,7 +14,7 @@ public interface FarmSIN {
     FarmCreationDTO createFarm(FarmCreationDTO farmCreationDTO);
     List<AllFarmsDTO> getFarms();
     FarmOnlyDTO getFarmById(UUID id);
-    FarmOnlyDTO globalGetFarm(String name, String location, Double surface, LocalDate creationDate);
+    List<FarmOnlyDTO> globalGetFarm(String name, String location, Double surface, LocalDate creationDate);
     Boolean deleteFarm(UUID id);
     FarmCreationDTO updateFarm(UUID id, FarmCreationDTO farmCreationDTO);
 }

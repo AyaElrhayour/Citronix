@@ -46,12 +46,9 @@ public class FarmSIM implements FarmSIN {
     }
 
     @Override
-    public FarmOnlyDTO globalGetFarm(String name, String location, Double surface, LocalDate creationDate) {
+    public List<FarmOnlyDTO> globalGetFarm(String name, String location, Double surface, LocalDate creationDate) {
        List<Farm> farms = farmRepository.globalSearchForFarms(name, location, surface, creationDate);
-        if (farms.isEmpty()) {
-            return null;
-        }
-        return farmMapper.toFarmOnlyDTO(farms.stream().findFirst().get());
+        return farms.stream().map(farmMapper::toFarmOnlyDTO).toList();
     }
 
     @Override
