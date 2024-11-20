@@ -1,5 +1,6 @@
 package com.youcode.citronix.DTO.Farm;
 
+import com.youcode.citronix.DTO.Field.FieldOnlyDTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -33,7 +34,7 @@ public class FarmOnlyDTO {
     private LocalDate creationDate;
 
     @NotBlank
-    private List<AllFieldsDTO> allFields;
+    private List<FieldOnlyDTO> allFields;
 
 
 }
