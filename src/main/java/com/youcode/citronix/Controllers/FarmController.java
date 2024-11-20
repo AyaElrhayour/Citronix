@@ -2,7 +2,7 @@ package com.youcode.citronix.Controllers;
 
 
 import com.youcode.citronix.DTO.Farm.FarmCreationDTO;
-import com.youcode.citronix.DTO.Farm.FarmOnlyDTO;
+import com.youcode.citronix.DTO.Farm.FarmDTO;
 import com.youcode.citronix.Services.Interfaces.FarmSIN;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -29,22 +29,22 @@ public class FarmController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FarmOnlyDTO>> getAllFarms() {
+    public ResponseEntity<List<FarmDTO>> getAllFarms() {
         return ResponseEntity.ok(farmSIN.getFarms());
     }
 
     @GetMapping("/search/{id}")
-    public ResponseEntity<FarmOnlyDTO> getFarmById(@PathVariable UUID id) {
+    public ResponseEntity<FarmDTO> getFarmById(@PathVariable UUID id) {
         return ResponseEntity.ok(farmSIN.getFarmById(id));
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<FarmOnlyDTO>> globalSearch(
+    public ResponseEntity<List<FarmDTO>> globalSearch(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String location,
             @RequestParam(required = false) Double surface,
             @RequestParam(required = false) LocalDate creationDate) {
-        List<FarmOnlyDTO> farm = farmSIN.globalGetFarm( name, location, surface, creationDate);
+        List<FarmDTO> farm = farmSIN.globalGetFarm( name, location, surface, creationDate);
         if (farm == null) {
             return ResponseEntity.notFound().build();
         }

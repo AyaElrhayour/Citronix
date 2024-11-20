@@ -1,6 +1,8 @@
 package com.youcode.citronix.DTO.Field;
 
+import com.youcode.citronix.DTO.Farm.FarmOnlyDTO;
 import com.youcode.citronix.DTO.Tree.TreeCreationDTO;
+import com.youcode.citronix.DTO.Tree.TreeOnlyDTO;
 import com.youcode.citronix.Models.Entities.Farm;
 import com.youcode.citronix.Models.Entities.Tree;
 import jakarta.validation.constraints.NotBlank;
@@ -23,9 +25,9 @@ public class FieldDTO {
     private Double surface;
 
     @NotBlank
-    private Farm farm;
+    private FarmOnlyDTO farm;
 
     @NotBlank
-    private List<TreeCreationDTO> trees;
+    private List<TreeOnlyDTO> trees;
 
 }

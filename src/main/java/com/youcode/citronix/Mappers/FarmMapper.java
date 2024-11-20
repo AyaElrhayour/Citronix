@@ -2,7 +2,7 @@ package com.youcode.citronix.Mappers;
 
 
 import com.youcode.citronix.DTO.Farm.FarmCreationDTO;
-import com.youcode.citronix.DTO.Farm.FarmOnlyDTO;
+import com.youcode.citronix.DTO.Farm.FarmDTO;
 import com.youcode.citronix.Models.Entities.Farm;
 import org.mapstruct.Mapper;
 
@@ -13,6 +13,6 @@ public interface FarmMapper {
 
     FarmCreationDTO toFarmCreationDTO(Farm farm);
 
-    FarmOnlyDTO toFarmOnlyDTO(Farm farm);
+    FarmDTO toFarmOnlyDTO(Farm farm);
 
 }

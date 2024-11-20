@@ -1,7 +1,7 @@
 package com.youcode.citronix.Services.Implementation;
 
 import com.youcode.citronix.DTO.Farm.FarmCreationDTO;
-import com.youcode.citronix.DTO.Farm.FarmOnlyDTO;
+import com.youcode.citronix.DTO.Farm.FarmDTO;
 import com.youcode.citronix.Mappers.FarmMapper;
 import com.youcode.citronix.Models.Entities.Farm;
 import com.youcode.citronix.Repositories.FarmRepository;
@@ -29,13 +29,13 @@ public class FarmSIM implements FarmSIN {
     }
 
     @Override
-    public List<FarmOnlyDTO> getFarms() {
+    public List<FarmDTO> getFarms() {
         List<Farm> farms = farmRepository.findAll();
         return farms.stream().map(farmMapper::toFarmOnlyDTO).toList();
     }
 
     @Override
-    public FarmOnlyDTO getFarmById(UUID id) {
+    public FarmDTO getFarmById(UUID id) {
         if (farmRepository.existsById(id)) {
             return farmMapper.toFarmOnlyDTO(farmRepository.findById(id).get());
         }else {
@@ -44,7 +44,7 @@ public class FarmSIM implements FarmSIN {
     }
 
     @Override
-    public List<FarmOnlyDTO> globalGetFarm(String name, String location, Double surface, LocalDate creationDate) {
+    public List<FarmDTO> globalGetFarm(String name, String location, Double surface, LocalDate creationDate) {
        List<Farm> farms = farmRepository.globalSearchForFarms(name, location, surface, creationDate);
         return farms.stream().map(farmMapper::toFarmOnlyDTO).toList();
     }

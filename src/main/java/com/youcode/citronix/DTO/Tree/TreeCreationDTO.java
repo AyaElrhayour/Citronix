@@ -17,8 +17,6 @@ public class TreeCreationDTO {
 
     private UUID id;
 
-    @Positive
-    @NotNull
     private int age;
 
     @NotNull
