@@ -30,8 +30,8 @@ public class FieldSIM implements FieldSIN {
     @Override
     @Transactional
     public FieldCreationDTO createField(FieldCreationDTO fieldCreationDTO) {
-        Farm farm = farmRepository.findById(fieldCreationDTO.getFarmId())
-                .orElseThrow(() -> new EntityNotFoundException("Farm with ID " + fieldCreationDTO.getFarmId() + " not found"));
+        Farm farm = farmRepository.findById(fieldCreationDTO.getFarm_Id())
+                .orElseThrow(() -> new EntityNotFoundException("Farm with ID " + fieldCreationDTO.getFarm_Id() + " not found"));
 
         FieldValidation.validateFieldConstraints(farm, fieldCreationDTO.getSurface());
 
@@ -72,8 +72,8 @@ public class FieldSIM implements FieldSIN {
         Field existingField = fieldRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Field with ID " + id + " not found"));
 
-        Farm farm = farmRepository.findById(fieldCreationDTO.getFarmId())
-                .orElseThrow(() -> new EntityNotFoundException("Farm with ID " + fieldCreationDTO.getFarmId() + " not found"));
+        Farm farm = farmRepository.findById(fieldCreationDTO.getFarm_Id())
+                .orElseThrow(() -> new EntityNotFoundException("Farm with ID " + fieldCreationDTO.getFarm_Id() + " not found"));
 
         FieldValidation.validateFieldConstraints(farm, fieldCreationDTO.getSurface());
 

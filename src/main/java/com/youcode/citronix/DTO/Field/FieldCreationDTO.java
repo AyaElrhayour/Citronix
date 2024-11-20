@@ -3,7 +3,6 @@ package com.youcode.citronix.DTO.Field;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +21,6 @@ public class FieldCreationDTO {
     @Min(value = 1000, message = "The minimum surface is 1000 m²")
     private Double surface;
 
-    @NotBlank
-    private UUID farmId;
+    @NotNull
+    private UUID farm_Id;
 }
