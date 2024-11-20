@@ -1,6 +1,5 @@
 package com.youcode.citronix.Services.Implementation;
 
-import com.youcode.citronix.DTO.Farm.AllFarmsDTO;
 import com.youcode.citronix.DTO.Farm.FarmCreationDTO;
 import com.youcode.citronix.DTO.Farm.FarmOnlyDTO;
 import com.youcode.citronix.Mappers.FarmMapper;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -31,9 +29,9 @@ public class FarmSIM implements FarmSIN {
     }
 
     @Override
-    public List<AllFarmsDTO> getFarms() {
+    public List<FarmOnlyDTO> getFarms() {
         List<Farm> farms = farmRepository.findAll();
-        return farms.stream().map(farmMapper::toAllFarmsDTO).toList();
+        return farms.stream().map(farmMapper::toFarmOnlyDTO).toList();
     }
 
     @Override

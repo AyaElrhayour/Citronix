@@ -1,6 +1,5 @@
 package com.youcode.citronix.Services.Interfaces;
 
-import com.youcode.citronix.DTO.Farm.AllFarmsDTO;
 import com.youcode.citronix.DTO.Farm.FarmCreationDTO;
 import com.youcode.citronix.DTO.Farm.FarmOnlyDTO;
 
@@ -12,7 +11,7 @@ public interface FarmSIN {
 
 
     FarmCreationDTO createFarm(FarmCreationDTO farmCreationDTO);
-    List<AllFarmsDTO> getFarms();
+    List<FarmOnlyDTO> getFarms();
     FarmOnlyDTO getFarmById(UUID id);
     List<FarmOnlyDTO> globalGetFarm(String name, String location, Double surface, LocalDate creationDate);
     Boolean deleteFarm(UUID id);

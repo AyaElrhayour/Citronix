@@ -1,10 +1,9 @@
-package com.youcode.citronix.Repositories;
+package com.youcode.citronix.Repositories.Custom;
 
 import com.youcode.citronix.Models.Entities.Farm;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 public interface FarmRepositoryCustom {
 

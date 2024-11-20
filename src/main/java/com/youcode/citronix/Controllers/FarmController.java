@@ -1,10 +1,8 @@
 package com.youcode.citronix.Controllers;
 
 
-import com.youcode.citronix.DTO.Farm.AllFarmsDTO;
 import com.youcode.citronix.DTO.Farm.FarmCreationDTO;
 import com.youcode.citronix.DTO.Farm.FarmOnlyDTO;
-import com.youcode.citronix.Repositories.FarmRepository;
 import com.youcode.citronix.Services.Interfaces.FarmSIN;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -31,7 +29,7 @@ public class FarmController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AllFarmsDTO>> getAllFarms() {
+    public ResponseEntity<List<FarmOnlyDTO>> getAllFarms() {
         return ResponseEntity.ok(farmSIN.getFarms());
     }
 
