@@ -14,17 +14,17 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HarvestCreationDTO {
+public class HarvestDTO {
+
 
     private UUID id;
 
-    @NotNull
     private LocalDate harvestDate;
 
-    private boolean isFullySold;
-
-    @NotNull
     private Double quantity;
 
     private Season season;
+
+    private boolean isFullySold;
+
 }
