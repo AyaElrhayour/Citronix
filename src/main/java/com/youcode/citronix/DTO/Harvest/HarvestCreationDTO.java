@@ -18,9 +18,6 @@ public class HarvestCreationDTO {
 
     private UUID id;
 
-    @NotNull
-    private LocalDate harvestDate;
-
     private boolean isFullySold;
 
     @NotNull

@@ -58,7 +58,6 @@ public class HarvestSIM implements HarvestSIN {
     public HarvestCreationDTO updateHarvest(UUID id, HarvestCreationDTO harvestCreationDTO) {
         Harvest harvest = harvestRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Harvest with id " + id + " not found"));
 
-        harvest.setHarvestDate(harvestCreationDTO.getHarvestDate());
         harvest.setQuantity(harvestCreationDTO.getQuantity());
         harvest.setSeason(harvestCreationDTO.getSeason());
         harvest.setFullySold(harvestCreationDTO.isFullySold());

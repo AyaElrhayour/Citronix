@@ -62,12 +62,6 @@ public class TreeValidation {
         }
     }
 
-    private static void validateTreeAge(int treeAge) {
-        int maxTreeLifespan = 20;
-        if (treeAge > maxTreeLifespan) {
-            throw new IllegalArgumentException("A tree cannot be productive beyond " + maxTreeLifespan + " years of age.");
-        }
-    }
 
     private static void validatePlantingPeriod(LocalDate plantingDate) {
         if (plantingDate == null) {

@@ -23,8 +23,6 @@ public class Harvest {
     @UuidGenerator
     private UUID id;
 
-    @Column(name = "harvestDate" , nullable = false)
-    private LocalDate harvestDate;
 
     @Column(nullable = false , name = "quantity")
     private Double quantity;

@@ -1,6 +1,7 @@
 package com.youcode.citronix.DTO.Harvest;
 
 
+import com.youcode.citronix.Models.Enums.Season;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ public class HarvestOnlyDTO {
 
     private UUID id;
 
-    private LocalDate harvestDate;
-
     private Double quantity;
+
+    private Season season;
 }

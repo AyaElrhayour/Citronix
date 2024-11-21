@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -19,6 +21,9 @@ public class HarvestDetails {
 
     @Column(nullable = false)
     private Double quantity;
+
+    @Column(name = "harvestDate" , nullable = false)
+    private LocalDate harvestDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("treeId")

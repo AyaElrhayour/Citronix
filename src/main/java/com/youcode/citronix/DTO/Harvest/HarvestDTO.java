@@ -19,8 +19,6 @@ public class HarvestDTO {
 
     private UUID id;
 
-    private LocalDate harvestDate;
-
     private Double quantity;
 
     private Season season;
