@@ -11,14 +11,49 @@ public class TreeValidation {
     private TreeValidation() {}
 
     public static void validateTree(Field field, LocalDate plantingDate) {
-        int treeAge = calculateTreeAge(plantingDate);
+        calculateTreeAge(plantingDate);
         validateTreeDensity(field);
-        validateTreeAge(treeAge);
         validatePlantingPeriod(plantingDate);
     }
 
-    private static void validateTreeDensity(Field field) {
+    public static int calculateTreeAge(LocalDate plantingDate) {
+        if (plantingDate == null) {
+            throw new IllegalArgumentException("Planting date cannot be null.");
+        }
 
+        LocalDate currentDate = LocalDate.now();
+        if (plantingDate.isAfter(currentDate)) {
+            throw new IllegalArgumentException("Planting date cannot be in the future.");
+        }
+
+        Period agePeriod = Period.between(plantingDate, currentDate);
+        return agePeriod.getYears();
+    }
+
+    public static String calculateTreeType(int treeAge) {
+        if (treeAge < 3) {
+            return "Young";
+        } else if (treeAge <= 10) {
+            return "Mature";
+        } else {
+            return "Old";
+        }
+    }
+
+    public static String calculateSeasonalProductivity(String treeType) {
+        switch (treeType) {
+            case "Young":
+                return "2.5 kg / season";
+            case "Mature":
+                return "12 kg / season";
+            case "Old":
+                return "20 kg / season";
+            default:
+                throw new IllegalArgumentException("Invalid tree type.");
+        }
+    }
+
+    private static void validateTreeDensity(Field field) {
         double fieldSurfaceInSquareMeters = field.getSurface() * 10_000;
         int maxTrees = (int) (fieldSurfaceInSquareMeters / 10);
 
@@ -43,18 +78,5 @@ public class TreeValidation {
         if (plantingMonth.compareTo(Month.MARCH) < 0 || plantingMonth.compareTo(Month.MAY) > 0) {
             throw new IllegalArgumentException("Trees can only be planted between March and May.");
         }
-    }
-
-    public static int calculateTreeAge(LocalDate plantingDate) {
-        if (plantingDate == null) {
-            throw new IllegalArgumentException("Planting date cannot be null.");
-        }
-
-        LocalDate currentDate = LocalDate.now();
-        if (plantingDate.isAfter(currentDate)) {
-            throw new IllegalArgumentException("Planting date cannot be in the future.");
-        }
-
-        return Period.between(plantingDate, currentDate).getYears();
     }
 }

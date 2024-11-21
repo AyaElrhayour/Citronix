@@ -2,7 +2,6 @@ package com.youcode.citronix.DTO.Tree;
 
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,10 +16,14 @@ public class TreeCreationDTO {
 
     private UUID id;
 
-    private int age;
-
     @NotNull
     private LocalDate plantingDate;
+
+    private String age;
+
+    private String treeType;
+
+    private String seasonalProductivity;
 
     @NotNull
     private boolean isHarvested;

@@ -22,9 +22,6 @@ public class Tree {
     @UuidGenerator
     private UUID id;
 
-    @Column(nullable = false , name = "age")
-    private int age;
-
     @Column(name = "plantingDate" , nullable = false)
     private LocalDate plantingDate;
 
